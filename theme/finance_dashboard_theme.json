@@ -1,0 +1,55 @@
+{
+  "name": "Finance dahboard",
+  "dataColors": [
+    "#1F77B4",
+    "#2CA02C",
+    "#FF7F0E",
+    "#9467BD",
+    "#D62728",
+    "#6F42C1",
+    "#17A2B8",
+    "#6C757D"
+  ],
+  "background": "#F7F9FC",
+  "foreground": "#1F2D3D",
+  "tableAccent": "#1F77B4",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "fontFamily": "Segoe UI",
+            "fontSize": 12,
+            "color": {
+              "solid": {
+                "color": "#1F2D3D"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "fontFamily": "Segoe UI",
+            "color": {
+              "solid": {
+                "color": "#5B6777"
+              }
+            }
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}
