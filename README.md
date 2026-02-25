@@ -52,11 +52,10 @@ Highlights accounts receivable aging, DSO trends, and potential collections risk
 ## 📁 Repository Structure
 
 ```text
-finance-dashboard-powerbi/
+finance-dashboard/
 │
 ├── data/
 │   ├── finance_data.xlsx
-│   └── finance_data.csv
 │
 ├── dax/
 │   └── Finance_dahboard_Measures.dax
