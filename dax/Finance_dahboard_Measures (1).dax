@@ -1,0 +1,45 @@
+// =============================
+// Finance dahboard - Measures
+// Assumes you import finance_data.xlsx (sheet: Finance) into a table named 'Finance'
+// Create a Date table and relate Date[Date] -> Finance[Date]
+// =============================
+
+// Base amounts (values stored in $K)
+Revenue $ = SUM ( Finance[Revenue_K] ) * 1000
+COGS $ = SUM ( Finance[COGS_K] ) * 1000
+Opex $ = SUM ( Finance[Opex_K] ) * 1000
+Gross Profit $ = SUM ( Finance[GrossProfit_K] ) * 1000
+EBITDA $ = SUM ( Finance[EBITDA_K] ) * 1000
+EBITDA Margin = DIVIDE ( [EBITDA $], [Revenue $] )
+
+// Budget
+Revenue Budget $ = SUM ( Finance[Revenue_Budget_K] ) * 1000
+COGS Budget $ = SUM ( Finance[COGS_Budget_K] ) * 1000
+Opex Budget $ = SUM ( Finance[Opex_Budget_K] ) * 1000
+EBITDA Budget $ = ( [Revenue Budget $] - [COGS Budget $] - [Opex Budget $] )
+
+// Variance (Actual - Budget)
+Revenue Var $ = [Revenue $] - [Revenue Budget $]
+COGS Var $ = [COGS $] - [COGS Budget $]
+Opex Var $ = [Opex $] - [Opex Budget $]
+EBITDA Var $ = [EBITDA $] - [EBITDA Budget $]
+
+// Cash & FCF (snapshot measures)
+Cash End $ =
+VAR _maxDate = MAX ( Finance[Date] )
+RETURN CALCULATE ( MAX ( Finance[Cash_K] ) * 1000, Finance[Date] = _maxDate )
+
+CFO $ = SUM ( Finance[CFO_K] ) * 1000
+Capex $ = SUM ( Finance[Capex_K] ) * 1000
+FCF $ = SUM ( Finance[FCF_K] ) * 1000
+
+// Working Capital days (already calculated in table)
+DSO (Days) = AVERAGE ( Finance[DSO_days] )
+DIO (Days) = AVERAGE ( Finance[DIO_days] )
+DPO (Days) = AVERAGE ( Finance[DPO_days] )
+CCC (Days) = AVERAGE ( Finance[CCC_days] )
+
+// YTD examples (requires Date table with marked date)
+Revenue YTD $ = TOTALYTD ( [Revenue $], 'Date'[Date] )
+EBITDA YTD $ = TOTALYTD ( [EBITDA $], 'Date'[Date] )
+FCF YTD $ = TOTALYTD ( [FCF $], 'Date'[Date] )
